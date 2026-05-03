@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CanItRun — Game Compatibility Checker</title>
+  <meta name="description" content="Check if your PC or mobile device can run your favorite games. Enter your specs, pick a game, get the truth." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/" class="nav-brand">CAN<span>IT</span>RUN</a>
+    <ul class="nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container page-content">
+    <!-- Hero -->
+    <section class="hero reveal">
+      <h1>Can Your Device Handle It?<span class="cursor"></span></h1>
+      <p>Enter your specs. Pick a game. Get the truth.</p>
+    </section>
+
+    <!-- Device Form -->
+    <section class="card reveal mt-3" id="device-form-section">
+      <h2 class="text-accent mb-2">⬡ Device Specs</h2>
+
+      <div class="form-group">
+        <label>Device Type</label>
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-value="PC">PC</button>
+          <button class="toggle-btn" data-value="Laptop">Laptop</button>
+          <button class="toggle-btn" data-value="Mobile">Mobile</button>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ram">RAM</label>
+          <select id="ram">
+            <option value="2">2 GB</option>
+            <option value="4">4 GB</option>
+            <option value="6">6 GB</option>
+            <option value="8" selected>8 GB</option>
+            <option value="12">12 GB</option>
+            <option value="16">16 GB</option>
+            <option value="32">32 GB</option>
+            <option value="64">64 GB+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="storage">Available Storage (GB)</label>
+          <input type="number" id="storage" value="100" min="1" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="gpu">GPU Tier</label>
+          <select id="gpu">
+            <option value="1">1 — Integrated (Intel UHD / Iris)</option>
+            <option value="2">2 — Entry (GTX 1050 / RX 560)</option>
+            <option value="3" selected>3 — Mid (GTX 1660 / RX 5600)</option>
+            <option value="4">4 — High (RTX 3070 / RX 6800)</option>
+            <option value="5">5 — Ultra (RTX 4090 / RX 7900 XTX)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cpu">CPU Tier</label>
+          <select id="cpu">
+            <option value="1">1 — Low (Dual-core &lt; 2 GHz)</option>
+            <option value="2">2 — Budget (i3 / Ryzen 3)</option>
+            <option value="3" selected>3 — Mid (i5 / Ryzen 5)</option>
+            <option value="4">4 — High (i7 / Ryzen 7)</option>
+            <option value="5">5 — Flagship (i9 / Ryzen 9)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="os">Operating System</label>
+        <select id="os">
+          <option value="Windows 10">Windows 10</option>
+          <option value="Windows 11">Windows 11</option>
+          <option value="Windows 7">Windows 7</option>
+          <option value="Windows 8">Windows 8</option>
+          <option value="Windows XP">Windows XP</option>
+          <option value="macOS">macOS</option>
+          <option value="Linux">Linux</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Game Select -->
+    <section class="mt-4 reveal">
+      <h2 class="text-accent mb-2">⬡ Select a Game</h2>
+      <div id="game-grid" class="game-grid stagger">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Run Button -->
+    <div class="text-center mt-4 reveal">
+      <button id="run-btn" class="btn btn-primary" disabled onclick="runDiagnostic()">
+        ▶ RUN DIAGNOSTIC
+      </button>
+    </div>
+  </main>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Analyzing hardware...</div>
+  </div>
+
+  <!-- Chat FAB -->
+  <div id="chat-fab" onclick="openChat()">💬</div>
+  <div id="chat-window">
+    <div id="chat-header">
+      <span>System Advisor</span>
+      <button onclick="closeChat()">✕</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about specs, upgrades..." />
+      <button onclick="sendChat(document.getElementById('chat-input').value)">→</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>CanItRun © 2025 — Built for GfG Workshop</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => loadGames());
+  </script>
+</body>
+</html>

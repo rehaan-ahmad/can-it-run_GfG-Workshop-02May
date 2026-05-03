@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — CanItRun</title>
+  <meta name="description" content="Learn how CanItRun works, the tier scoring system, tech stack, and FAQs." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/" class="nav-brand">CAN<span>IT</span>RUN</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container page-content">
+    <section class="hero reveal">
+      <h1>About CanItRun<span class="cursor"></span></h1>
+      <p>How the scoring works, tech behind the tool, and everything else.</p>
+    </section>
+
+    <!-- How Scoring Works -->
+    <section class="card reveal mt-3">
+      <h2 class="text-accent mb-2">⬡ How Scoring Works</h2>
+      <p class="text-dim mb-2">We compare your hardware against each game's minimum and recommended requirements using a weighted scoring system:</p>
+
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Weight</th>
+            <th>Why?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPU</td>
+            <td class="text-accent">40 pts</td>
+            <td class="text-dim">Graphics card matters most for gaming performance</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td class="text-accent">25 pts</td>
+            <td class="text-dim">Insufficient RAM causes stuttering and crashes</td>
+          </tr>
+          <tr>
+            <td>CPU</td>
+            <td class="text-accent">25 pts</td>
+            <td class="text-dim">Processor handles game logic, AI, and physics</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td class="text-accent">10 pts</td>
+            <td class="text-dim">You need enough space to install the game</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-3">
+        <h3 class="mb-2">Tier System</h3>
+        <p class="text-dim mb-2">Instead of comparing exact hardware models, we use a 1–5 tier system for GPUs and CPUs:</p>
+        <table class="spec-table">
+          <thead>
+            <tr><th>Tier</th><th>GPU Example</th><th>CPU Example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="text-dim">Intel UHD / Iris</td><td class="text-dim">Dual-core &lt; 2 GHz</td></tr>
+            <tr><td>2</td><td class="text-dim">GTX 1050 / RX 560</td><td class="text-dim">i3 / Ryzen 3</td></tr>
+            <tr><td>3</td><td class="text-dim">GTX 1660 / RX 5600</td><td class="text-dim">i5 / Ryzen 5</td></tr>
+            <tr><td>4</td><td class="text-dim">RTX 3070 / RX 6800</td><td class="text-dim">i7 / Ryzen 7</td></tr>
+            <tr><td>5</td><td class="text-dim">RTX 4090 / RX 7900 XTX</td><td class="text-dim">i9 / Ryzen 9</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-3">
+        <h3 class="mb-2">Verdict Thresholds</h3>
+        <table class="spec-table">
+          <thead>
+            <tr><th>Verdict</th><th>Condition</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="text-accent">Runs Great 🚀</td><td class="text-dim">Meets minimum 100% AND recommended ≥ 85%</td></tr>
+            <tr><td class="text-gold">Runs OK ⚠️</td><td class="text-dim">Meets minimum 100% AND recommended ≥ 50%</td></tr>
+            <tr><td style="color:#FF8C00">Runs Poorly 🐌</td><td class="text-dim">Minimum score ≥ 60%</td></tr>
+            <tr><td class="text-red">Won't Run ❌</td><td class="text-dim">Minimum score &lt; 60%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="card reveal mt-3">
+      <h2 class="text-accent mb-2">⬡ Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Is this 100% accurate?</div>
+        <div class="faq-answer">No tool can guarantee exact performance. CanItRun gives you a strong estimate based on official system requirements and our tier-based scoring model. Real-world performance depends on drivers, background processes, cooling, and more.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do I know my GPU / CPU tier?</div>
+        <div class="faq-answer">Check your device's specifications (Settings → System → About on Windows, or "About This Mac" on macOS). Match your graphics card and processor to the closest tier in our table above. When in doubt, pick the lower tier for a conservative estimate.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I check mobile games?</div>
+        <div class="faq-answer">Yes! Switch the device type to "Mobile" on the home page. The OS dropdown will switch to Android/iOS versions, and the game grid will include mobile titles.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What tech stack is this built with?</div>
+        <div class="faq-answer">Backend: Python + FastAPI. Frontend: Vanilla HTML, CSS, and JavaScript. Deployment: Docker + Google Cloud Run. No frameworks — just pure web fundamentals with a dark terminal aesthetic.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I contribute or add games?</div>
+        <div class="faq-answer">This is an open project built for a GfG workshop. Feel free to fork the repo and add your own games to the data/games.py file!</div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="card reveal mt-3">
+      <h2 class="text-accent mb-2">⬡ Contact Us</h2>
+      <form onsubmit="submitContact(event)">
+        <div class="form-group">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" required placeholder="What's on your mind?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-1">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Chat FAB -->
+  <div id="chat-fab" onclick="openChat()">💬</div>
+  <div id="chat-window">
+    <div id="chat-header">
+      <span>System Advisor</span>
+      <button onclick="closeChat()">✕</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about specs, upgrades..." />
+      <button onclick="sendChat(document.getElementById('chat-input').value)">→</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>CanItRun © 2025 — Built for GfG Workshop</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compatibility Result — CanItRun</title>
+  <meta name="description" content="Your game compatibility result — see if your hardware can handle it." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/" class="nav-brand">CAN<span>IT</span>RUN</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container page-content">
+    <!-- Game Header -->
+    <section class="text-center reveal">
+      <img id="result-game-img" src="" alt="Game" style="max-width: 300px; margin: 0 auto; border-radius: 8px;" />
+      <h1 id="result-game-name" class="mt-2"></h1>
+      <p id="result-game-genre" class="text-dim"></p>
+    </section>
+
+    <!-- Verdict Banner -->
+    <section id="verdict-banner" class="verdict-banner reveal mt-3">
+      <h2></h2>
+      <div class="typing-text"></div>
+    </section>
+
+    <!-- Score Bars -->
+    <section class="card reveal mt-3">
+      <h3 class="text-accent mb-2">⬡ Compatibility Scores</h3>
+
+      <div class="mb-2">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+          <span>Minimum Spec Score</span>
+          <span id="min-score-label">0%</span>
+        </div>
+        <div class="score-bar">
+          <div id="min-score-bar" class="score-bar-fill"></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+          <span>Recommended Spec Score</span>
+          <span id="rec-score-label">0%</span>
+        </div>
+        <div class="score-bar">
+          <div id="rec-score-bar" class="score-bar-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spec Breakdown Table -->
+    <section class="card reveal mt-3">
+      <h3 class="text-accent mb-2">⬡ Spec Breakdown</h3>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Your Spec</th>
+            <th>Minimum</th>
+            <th>Recommended</th>
+          </tr>
+        </thead>
+        <tbody id="spec-tbody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Bottleneck Alert -->
+    <div class="alert-box bottleneck reveal mt-3">
+      <h4 class="text-red">⚠ Bottleneck</h4>
+      <p id="bottleneck-text"></p>
+    </div>
+
+    <!-- Upgrade Tip -->
+    <div class="alert-box tip reveal mt-2">
+      <h4 class="text-accent">💡 Upgrade Tip</h4>
+      <p id="upgrade-tip-text"></p>
+    </div>
+
+    <!-- Settings Suggestion -->
+    <div class="alert-box tip reveal mt-2">
+      <h4 class="text-accent">🎮 Settings Suggestion</h4>
+      <p id="settings-text"></p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex-center mt-4 reveal">
+      <a href="/" class="btn btn-primary">⬡ Check Another Game</a>
+      <button class="btn btn-secondary" onclick="openChat()">💬 Ask the Advisor</button>
+    </div>
+  </main>
+
+  <!-- Chat FAB -->
+  <div id="chat-fab" onclick="openChat()">💬</div>
+  <div id="chat-window">
+    <div id="chat-header">
+      <span>System Advisor</span>
+      <button onclick="closeChat()">✕</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about specs, upgrades..." />
+      <button onclick="sendChat(document.getElementById('chat-input').value)">→</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>CanItRun © 2025 — Built for GfG Workshop</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => renderResult());
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Games — CanItRun</title>
+  <meta name="description" content="Browse all games in the CanItRun database. Filter by platform, search by name or genre." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/" class="nav-brand">CAN<span>IT</span>RUN</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/games.html" class="active">Games</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container page-content">
+    <section class="hero reveal">
+      <h1>Game Library<span class="cursor"></span></h1>
+      <p>Browse all supported games. Click a game to check compatibility.</p>
+    </section>
+
+    <!-- Search -->
+    <div class="search-bar reveal">
+      <input type="text" id="game-search" placeholder="Search by name or genre..." oninput="searchGames()" />
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs reveal">
+      <button class="filter-tab active" onclick="filterGames('All')">All</button>
+      <button class="filter-tab" onclick="filterGames('PC')">PC</button>
+      <button class="filter-tab" onclick="filterGames('Mobile')">Mobile</button>
+      <button class="filter-tab" onclick="filterGames('LowEnd')">Low-End Friendly</button>
+    </div>
+
+    <!-- Game Grid -->
+    <div id="game-grid" class="game-grid stagger">
+      <!-- Populated by JS -->
+    </div>
+  </main>
+
+  <!-- Chat FAB -->
+  <div id="chat-fab" onclick="openChat()">💬</div>
+  <div id="chat-window">
+    <div id="chat-header">
+      <span>System Advisor</span>
+      <button onclick="closeChat()">✕</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about specs, upgrades..." />
+      <button onclick="sendChat(document.getElementById('chat-input').value)">→</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>CanItRun © 2025 — Built for GfG Workshop</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => loadGamesPage());
+  </script>
+</body>
+</html>
